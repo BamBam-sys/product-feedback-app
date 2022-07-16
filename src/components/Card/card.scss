@@ -1,0 +1,35 @@
+@import '../../scss/variables.scss';
+
+.card {
+  background: $white-color;
+  padding: 3.2rem;
+  border-top: 6px solid transparent;
+  border-radius: 5px;
+
+  .status {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    .dot {
+      width: 0.8rem;
+      height: 0.8rem;
+      background: $orange-color;
+      border-radius: 50%;
+    }
+  }
+  .text {
+    margin-bottom: 1.6rem;
+
+    h3 {
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  .bottom {
+    margin-top: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}

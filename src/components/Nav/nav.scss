@@ -1,0 +1,123 @@
+@import '../../scss/variables.scss';
+.nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2.4rem;
+  background: $primary-darkblue-color;
+  color: $white-color;
+  border-radius: 10px;
+
+  .icon {
+    color: $white-color;
+  }
+
+  .roadmapNavItem {
+    .back {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      cursor: pointer;
+
+      span {
+        border-bottom: 1px solid transparent;
+        transition: all ease-in-out 200ms;
+
+        &:hover {
+          border-bottom-color: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      span {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: $white-color;
+      }
+    }
+  }
+
+  .navItem {
+    display: flex;
+    flex: 1;
+
+    .count,
+    .sort {
+      display: flex;
+      align-items: center;
+    }
+
+    .count {
+      margin-left: 1.6rem;
+    }
+
+    .sort {
+      gap: 0.5rem;
+      color: $primary-bg-color;
+      cursor: pointer;
+      transition: all ease-in-out 400ms;
+
+      &:hover {
+        opacity: 0.75;
+      }
+
+      p,
+      span {
+        font-size: 1.4rem;
+      }
+
+      h4 {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .menu {
+    position: relative;
+
+    .dropdown {
+      position: absolute;
+      top: 5.8rem;
+      width: 25.5rem;
+      background: $white-color;
+      color: $tertiary-darkblue-color;
+      box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+      border-radius: 10px;
+      z-index: 1;
+
+      ul {
+        li {
+          list-style: none;
+          padding: 1.2rem 2.4rem;
+          border-bottom: 1px solid rgba(58, 67, 116, 0.15);
+          transition: all ease-in-out 400ms;
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          &:hover {
+            color: $purple-color;
+          }
+        }
+
+        li:nth-child(4) {
+          border: none;
+        }
+
+        .icon {
+          display: none;
+        }
+
+        .icon.checked {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .btn {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import feedbackReducer from './feedbackSlice';
+import productRequestsReducer from './productRequestsSlice';
 
 export const store = configureStore({
-  reducer: { feedbackReducer },
+  reducer: { productRequestsReducer },
 });

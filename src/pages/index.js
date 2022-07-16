@@ -1,8 +1,15 @@
 import Home from './Home/Home';
-import FeedbackDetail from './FeedbackDetail/FeedbackDetail';
-import FeedbackEdit from './FeedbackDetail/FeedbackDetail';
-import FeedbackNew from './FeedbackNew/FeedbackNew';
+import ProductRequestDetail from './ProductRequestDetail/ProductRequestDetail';
+import ProductRequestNew from './ProductRequestNew/ProductRequestNew';
 import Roadmap from './Roadmap/Roadmap';
 import ErrorPage from './ErrorPage/ErrorPage';
+import ProductRequestEdit from './ProductRequestEdit/ProductRequestEdit';
 
-export { Home, FeedbackDetail, FeedbackEdit, FeedbackNew, Roadmap, ErrorPage };
+export {
+  Home,
+  ProductRequestDetail,
+  ProductRequestEdit,
+  ProductRequestNew,
+  Roadmap,
+  ErrorPage,
+};

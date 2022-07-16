@@ -3,3 +3,53 @@
 @import './scss/mediaQueries.scss';
 @import './scss/variables.scss';
 @import './scss/resets.scss';
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.33px;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+}
+h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  line-height: 1.4;
+}
+h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  line-height: 1.4;
+}
+.p-one {
+  font-size: 1.6rem;
+  line-height: 1.44;
+}
+.p-two {
+  font-size: 1.5rem;
+}
+.p-three {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+button {
+  padding: 1.2rem 2.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+}
+
+.container {
+  max-width: 111rem;
+  width: 95%;
+  margin: 9.4rem auto 0;
+}

@@ -1,0 +1,11 @@
+.roadmap {
+  display: flex;
+  flex-direction: column;
+
+  .roadmaps {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+}

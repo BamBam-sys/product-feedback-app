@@ -1,0 +1,17 @@
+@import '../../scss/variables.scss';
+
+.roadmapColumn {
+  .heading {
+    margin-bottom: 3.2rem;
+
+    h3 {
+      color: $secondary-darkblue-color;
+    }
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+}

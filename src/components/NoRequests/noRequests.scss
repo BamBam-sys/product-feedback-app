@@ -1,0 +1,26 @@
+.empty {
+  background: #fff;
+  max-width: 82.5rem;
+  padding: 11.1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+
+  .content {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h1 {
+      margin-top: 5.3rem;
+    }
+
+    p {
+      margin-top: 1.6rem;
+      margin-bottom: 6rem;
+    }
+  }
+}

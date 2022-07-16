@@ -108,7 +108,7 @@
       "status": "suggestion",
       "description": "Images and screencasts can enhance comments on solutions.",
       "comments": [
-        { 
+        {
           "id": 6,
           "content": "Right now, there is no ability to add images while giving feedback which isn't ideal because I have to use another app to show what I mean",
           "user": {
@@ -173,7 +173,8 @@
       "category": "bug",
       "upvotes": 3,
       "status": "suggestion",
-      "description": "Challenge preview images are missing when you apply a filter."
+      "description": "Challenge preview images are missing when you apply a filter.",
+      "comments": []
     },
     {
       "id": 7,
@@ -266,7 +267,8 @@
       "category": "bug",
       "upvotes": 9,
       "status": "in-progress",
-      "description": "Screenshots of solutions with animations don’t display correctly."
+      "description": "Screenshots of solutions with animations don’t display correctly.",
+      "comments": []
     },
     {
       "id": 12,

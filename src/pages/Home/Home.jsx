@@ -1,83 +1,56 @@
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { feedbackReceived } from '../../store/feedbackSlice';
-import { ReactComponent as SuggestionIcon } from '../../assets/suggestions/icon-suggestions.svg';
-import { ReactComponent as ArrowIconUp } from '../../assets/shared/icon-arrow-up.svg';
-import { ReactComponent as PlusIcon } from '../../assets/shared/icon-plus.svg';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectProductRequests } from '../../store/productRequestsSlice';
+import { Nav, ProductRequests, SideNav } from './../../components';
+import _ from 'lodash';
+
 import './home.scss';
-import data from '../../data.json';
-import ProductFeedbacks from './../../components/ProductFeedbacks/ProductFeedbacks';
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const productRequests = selectProductRequests(state);
+  const params = useParams();
 
-  useEffect(() => {
-    const fetchData = () => {
-      dispatch(feedbackReceived(data));
-    };
+  const [sort, setSort] = useState({
+    param: 'upvotes',
+    sortBy: 'desc',
+  });
 
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // filter product requests by status to get suggestions
+  const suggestions = productRequests.filter(
+    (item) => item.status === 'suggestion'
+  );
+
+  //  filter the suggestions list by the category (category is param), if params object is not empty,
+  const filteredSuggestions =
+    Object.keys(params).length !== 0
+      ? suggestions.filter((item) => item.category === params.category)
+      : suggestions;
+
+  // sort through suggestions
+  const sortedSuggestions = _.orderBy(
+    filteredSuggestions,
+    [sort.param],
+    [sort.sortBy]
+  );
+
+  const sortSuggestions = (param, sortBy) => {
+    setSort({
+      param,
+      sortBy,
+    });
+  };
 
   return (
-    <div className="home">
-      <div className="sidebar">
-        <div className="brand">
-          <h2>Frontend Mentor</h2>
-          <p className="p-two">Feedback Board</p>
-        </div>
-        <div className="category">
-          <p className="p-three">All</p>
-          <p className="p-three">UI</p>
-          <p className="p-three">UX</p>
-          <p className="p-three">Enhancement</p>
-          <p className="p-three">Bug</p>
-          <p className="p-three">Feature</p>
-        </div>
-        <div className="roadmap">
-          <div className="left">
-            <h3>Roadmap</h3>
-            <ul>
-              <li>Planned</li>
-              <li>In-Progress</li>
-              <li>Live</li>
-            </ul>
-          </div>
-          <div className="right">
-            <Link to="/">View</Link>
-            <ul>
-              <li>2</li>
-              <li>3</li>
-              <li>1</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div className="home container">
+      <SideNav />
       <div className="mainContent">
-        <div className="nav">
-          <SuggestionIcon />
-
-          <div className="count">
-            6 <h3>Suggestions</h3>
-          </div>
-
-          <div className="sort">
-            <p>Sort by</p> : <h4>Most Upvotes</h4>{' '}
-            <span>
-              <ArrowIconUp />
-            </span>
-          </div>
-
-          <button className="btn">
-            <span>
-              <PlusIcon />
-            </span>
-            Add Feedback
-          </button>
-        </div>
-        <ProductFeedbacks />
+        <Nav
+          sortedSuggestions={sortedSuggestions}
+          sortSuggestions={sortSuggestions}
+        />
+        <ProductRequests data={sortedSuggestions} />
       </div>
     </div>
   );
