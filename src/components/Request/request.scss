@@ -1,26 +1,52 @@
 @import '../../scss/variables.scss';
+@import '../../scss/mediaQueries.scss';
 
 .request {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 8fr 2fr;
   background: $white-color;
   border-radius: 10px;
   padding: 2.8rem 3.2rem;
   margin-bottom: 2rem;
 
-  .left {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
+  @include breakpoint(md) {
+    grid-template-columns: 1.5fr 8fr 2fr;
+  }
 
-    .productRequest {
-      h3 {
-        margin-bottom: 0.4rem;
-        color: $secondary-darkblue-color;
-      }
-      p {
-        margin-bottom: 1.2rem;
+  @include breakpoint(xs) {
+    grid-template-columns: 2fr 7fr;
+    gap: 1.6rem;
+  }
+
+  .votes {
+    justify-self: start;
+  }
+
+  .midEl {
+    @include breakpoint(xs) {
+      grid-column: 1/-1;
+      grid-row: 1;
+    }
+
+    .text {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+
+      .productRequest {
+        h3 {
+          margin-bottom: 0.4rem;
+          color: $secondary-darkblue-color;
+        }
+        p {
+          margin-bottom: 1.2rem;
+        }
       }
     }
+  }
+
+  .comments {
+    align-self: center;
+    justify-self: end;
   }
 }

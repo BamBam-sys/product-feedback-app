@@ -1,5 +1,5 @@
 import './productRequests.scss';
-import { Request, NoRequests } from '..';
+import { NoRequests, Request } from '..';
 
 const ProductRequests = ({ data }) => {
   return (

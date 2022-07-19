@@ -5,7 +5,8 @@ export const StyledUpvote = styled.div`
   flex-direction: ${(props) => (props.component ? 'row' : 'column')};
   align-items: center;
   gap: 0.8rem;
-  padding: ${(props) => (props.component ? '1rem 1.5rem' : '0.9rem')};
+  padding: ${(props) =>
+    props.component ? '1rem 1.5rem' : '1.4rem 1.6rem 0.8rem'};
   background: #f2f4fe;
   border-radius: 10px;
   cursor: pointer;
@@ -13,6 +14,15 @@ export const StyledUpvote = styled.div`
 
   &:hover {
     background: #cfd7ff;
+  }
+
+  @media (max-width: 28em) {
+    flex-direction: row;
+    padding: 1rem 1.5rem;
+  }
+
+  .icon {
+    width: 1.2rem;
   }
 `;
 

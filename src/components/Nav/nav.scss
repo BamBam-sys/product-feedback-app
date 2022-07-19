@@ -1,4 +1,6 @@
+@import '../../scss/mediaQueries.scss';
 @import '../../scss/variables.scss';
+
 .nav {
   display: flex;
   align-items: center;
@@ -7,6 +9,10 @@
   background: $primary-darkblue-color;
   color: $white-color;
   border-radius: 10px;
+
+  @include breakpoint(sm) {
+    border-radius: 0;
+  }
 
   .icon {
     color: $white-color;
@@ -71,12 +77,18 @@
     }
   }
 
+  .suggestion {
+    @include breakpoint(md) {
+      display: none;
+    }
+  }
+
   .menu {
     position: relative;
 
     .dropdown {
       position: absolute;
-      top: 5.8rem;
+      top: 6.7rem;
       width: 25.5rem;
       background: $white-color;
       color: $tertiary-darkblue-color;
@@ -119,5 +131,9 @@
     flex: 2;
     display: flex;
     justify-content: flex-end;
+
+    @include breakpoint(md) {
+      flex: 1;
+    }
   }
 }

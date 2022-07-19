@@ -51,5 +51,14 @@ input {
 .container {
   max-width: 111rem;
   width: 95%;
-  margin: 9.4rem auto 0;
+  margin: 9.4rem auto;
+
+  @include breakpoint(lg) {
+    width: 85%;
+  }
+
+  @include breakpoint(sm) {
+    margin-top: 0;
+    width: 100%;
+  }
 }

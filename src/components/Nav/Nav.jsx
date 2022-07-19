@@ -71,7 +71,7 @@ const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
         </div>
       ) : (
         <>
-          <div className="navItem ">
+          <div className="navItem suggestion">
             <SuggestionIcon className="icon" />
             <div className="count">
               <h3>{sortedSuggestions.length} Suggestions</h3>

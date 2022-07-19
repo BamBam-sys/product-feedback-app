@@ -1,10 +1,12 @@
 @import '../../scss/variables.scss';
+@import '../../scss/mediaQueries.scss';
 
 .sideNav {
+  flex: 1;
   display: flex;
-  flex-basis: 25.5rem;
   flex-direction: column;
   gap: 2.4rem;
+  position: relative;
 
   .brand {
     display: flex;
@@ -19,13 +21,22 @@
       #28a7ed 100%
     );
     border-radius: 10px;
+
+    @include breakpoint(sm) {
+      border-radius: 0px;
+      padding-top: 1.6rem;
+      padding-bottom: 1.6rem;
+    }
+
+    .icon {
+      display: none;
+    }
   }
 
   .category {
     display: flex;
     flex-wrap: wrap;
     gap: 1.4rem;
-    padding: 2.4rem 5rem 2.4rem 2.4rem;
     background: $white-color;
     padding: 2.4rem;
     border-radius: 10px;
@@ -34,7 +45,7 @@
       background: $primary-bg-color;
       font-weight: 600;
       font-size: 1.3rem;
-      padding: 0.5rem 1.6rem;
+      padding: 0.6rem 1.9rem;
       border-radius: 10px;
       text-decoration: none;
       color: $primary-blue-color;
@@ -43,11 +54,20 @@
       &:hover {
         background: $tag-hover-color;
       }
+
+      @include breakpoint(md) {
+        padding: 0.4rem 1rem;
+      }
     }
 
     .link.active {
       background: $primary-blue-color;
       color: $white-color;
+    }
+
+    @include breakpoint(lg) {
+      align-items: flex-start;
+      row-gap: 0;
     }
   }
 
@@ -58,6 +78,7 @@
     padding: 2.4rem;
     background: $white-color;
     border-radius: 10px;
+
     .top,
     .items {
       display: flex;
@@ -122,4 +143,95 @@
       }
     }
   }
+
+  .mobileMenu {
+    display: none;
+  }
+
+  .overlay,
+  .mobileMenu {
+    height: 100vh;
+    position: absolute;
+    top: 100%;
+    transition: all ease-out 400ms;
+    z-index: 11;
+  }
+
+  @include breakpoint(lg) {
+    flex-direction: row;
+
+    .brand,
+    .category,
+    .roadmap {
+      flex: 1;
+      padding: 2rem;
+    }
+  }
+
+  @include breakpoint(sm) {
+    .category,
+    .roadmap {
+      display: none;
+    }
+
+    //mobileMenu
+    .brand {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2.4rem;
+
+      .icon {
+        display: block;
+      }
+    }
+
+    .overlay {
+      width: 30vw;
+      left: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0.8)
+      );
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.6s ease 0.3s;
+    }
+
+    .mobileMenu {
+      width: 70vw;
+      background: $primary-bg-color;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 2.4rem;
+      gap: 2.4rem;
+      transform: translateX(100%);
+
+      .category,
+      .roadmap {
+        flex: initial;
+        display: flex;
+      }
+
+      .category {
+        row-gap: 1.6rem;
+        .link {
+          padding: 1.2rem 2.4rem;
+        }
+      }
+    }
+  }
+}
+
+.active .mobileMenu {
+  transform: translateX(0);
+}
+
+.active .overlay {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }

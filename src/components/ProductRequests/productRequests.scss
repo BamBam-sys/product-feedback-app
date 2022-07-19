@@ -1,3 +1,9 @@
+@import '../../scss/mediaQueries.scss';
+
 .productRequests {
   margin-top: 2.4rem;
+
+  @include breakpoint(md) {
+    padding: 0 2.4rem;
+  }
 }

@@ -1,4 +1,4 @@
-// @import './mediaQueries.scss';
+@import './mediaQueries.scss';
 
 /*
   1. Use a more-intuitive box-sizing model.
@@ -25,6 +25,7 @@ body {
   color: $tertiary-darkblue-color;
   background: $primary-bg-color;
   font-family: 'Jost', sans-serif;
+  overflow-x: hidden;
 
   @include breakpoint(xl) {
     font-size: 56.25%;

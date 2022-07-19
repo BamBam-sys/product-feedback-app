@@ -1,8 +1,18 @@
+@import '../../scss/mediaQueries.scss';
+
 .home {
   display: flex;
   gap: 3rem;
 
+  @include breakpoint(lg) {
+    flex-direction: column;
+  }
+
+  @include breakpoint(sm) {
+    gap: 0;
+  }
+
   .mainContent {
-    flex: 1;
+    flex: 3.2;
   }
 }
