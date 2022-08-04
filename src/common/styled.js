@@ -43,19 +43,65 @@ export const StyledComment = styled.div`
   opacity: ${(props) => props.opacity};
 `;
 
-export const Styledbutton = styled.button`
-  display: flex;
-  align-items: center;
+export const StyledButton = styled.button`
   border: none;
-  background: #ad1fea;
+  background: ${({ styles }) => styles.bg};
   color: #fff;
-  gap: 1rem;
   font-size: 1.4rem;
   font-weight: 700;
   transition: all ease-in-out 400ms;
 
   &:hover {
-    background: #c75af6;
+    background: ${({ styles }) => styles.bg};
     color: #f2f4ff;
+  }
+`;
+
+export const StyledAddButton = styled(StyledButton)`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: ${({ styles }) => styles.bg};
+
+  &:hover {
+    background: ${({ styles }) => styles.hoverBg};
+  }
+`;
+
+export const StyledGoBack = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
+
+  span {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $white-color;
+    border-bottom: 1px solid transparent;
+    transition: all ease-in-out 200ms;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+export const StyledCommentInput = styled.input`
+  padding: 1.6rem 0 3rem 2.4rem;
+  background: #f7f8fd;
+  border: none;
+  color: #3a4374;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  line-height: 22px;
+
+  &::placeholder {
+    color: #3a4374;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid #4661e6;
   }
 `;

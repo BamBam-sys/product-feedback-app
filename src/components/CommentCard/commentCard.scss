@@ -1,0 +1,96 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mediaQueries.scss';
+
+.commentCard {
+  position: relative;
+  padding: 2.2rem;
+
+  @include breakpoint(sm) {
+    row-gap: 1rem;
+    padding: 2.2rem 0;
+  }
+
+  .card-x {
+    display: grid;
+    grid-template-columns: 0.5fr 4fr 1fr;
+    row-gap: 0.5rem;
+    column-gap: 2.7rem;
+    padding-bottom: 2.4rem;
+
+    @include breakpoint(sm) {
+      row-gap: 1rem;
+    }
+
+    .img {
+      img {
+        border-radius: 50%;
+        min-width: 4rem;
+      }
+    }
+
+    .name {
+      h4 {
+        color: $secondary-darkblue-color;
+      }
+      span {
+        font-size: 1.4rem;
+      }
+    }
+
+    .reply {
+      justify-self: end;
+      align-self: start;
+      color: $primary-blue-color;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .comment {
+      grid-column: 2/-1;
+
+      @include breakpoint(sm) {
+        grid-column: 1/-1;
+      }
+    }
+  }
+
+  .response {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 6.7rem;
+    margin-top: 1.4rem;
+
+    .resInput {
+      width: 70%;
+    }
+  }
+
+  .replycard {
+    margin-left: 6.4rem;
+
+    @include breakpoint(sm) {
+      margin-left: 3.2rem;
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 52.5%;
+      background: rgba(140, 146, 179, 0.2);
+      position: absolute;
+      top: 12.5rem;
+      left: 5rem;
+
+      @include breakpoint(sm) {
+        top: 23.5rem;
+        left: 0;
+        height: 35.5%;
+      }
+    }
+  }
+}

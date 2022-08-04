@@ -1,0 +1,66 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mediaQueries.scss';
+
+.replyCardContainer {
+  // margin-left: 4.2rem;
+
+  .replyCard {
+    margin-top: 3.8rem;
+    display: grid;
+    grid-template-columns: 0.5fr 5fr 1fr;
+    row-gap: 1.2rem;
+    column-gap: 2.7rem;
+
+    .img {
+      img {
+        border-radius: 50%;
+        min-width: 4rem;
+      }
+    }
+
+    .name {
+      h4 {
+        color: $secondary-darkblue-color;
+      }
+      span {
+        font-size: 1.4rem;
+      }
+    }
+
+    .reply {
+      justify-self: end;
+      align-self: start;
+      color: $primary-blue-color;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .replyContent {
+      grid-column: 2/-1;
+
+      @include breakpoint(sm) {
+        grid-column: 1/-1;
+      }
+
+      span {
+        font: 1.5rem;
+        font-weight: 700;
+        color: $purple-color;
+      }
+    }
+  }
+  .response {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 6.7rem;
+    margin-top: 1.4rem;
+
+    .resInput {
+      width: 70%;
+    }
+  }
+}

@@ -8,6 +8,7 @@
   border-radius: 10px;
   padding: 2.8rem 3.2rem;
   margin-bottom: 2rem;
+  cursor: pointer;
 
   @include breakpoint(md) {
     grid-template-columns: 1.5fr 8fr 2fr;

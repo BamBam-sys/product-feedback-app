@@ -2,12 +2,10 @@ import { ReactComponent as SuggestionIcon } from '../../assets/suggestions/icon-
 import { ReactComponent as ArrowIconUp } from '../../assets/shared/icon-arrow-up.svg';
 import { ReactComponent as ArrowIconDown } from '../../assets/shared/icon-arrow-down.svg';
 import { ReactComponent as CheckIcon } from '../../assets/shared/icon-check.svg';
-import { ReactComponent as ArrowIconLeft } from '../../assets/shared/icon-arrow-left.svg';
 
 import './nav.scss';
-import { AddFeedbackBtn } from '../../common';
+import { AddFeedbackBtn, GoBack } from '../../common';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -19,7 +17,6 @@ const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
     li4: false,
   });
 
-  const navigate = useNavigate();
   const ref = useRef();
 
   const handleDropdown = () => {
@@ -63,10 +60,7 @@ const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
     <div className="nav" style={navPadding}>
       {component === 'roadmap' ? (
         <div className="roadmapNavItem">
-          <div className="back" onClick={() => navigate(-1)}>
-            <ArrowIconLeft />
-            <span>Go back</span>
-          </div>
+          <GoBack color={'rgba(255, 255, 255, 0.5)'} />
           <h1>Roadmap</h1>
         </div>
       ) : (
@@ -114,7 +108,12 @@ const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
                   </li>
                   <li
                     onClick={() =>
-                      handleSort('comments', 'desc', 'Most Comments', 'li3')
+                      handleSort(
+                        'commentsCount',
+                        'desc',
+                        'Most Comments',
+                        'li3'
+                      )
                     }
                   >
                     <p className="p-one">Most Comments</p>
@@ -124,7 +123,12 @@ const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
                   </li>
                   <li
                     onClick={() =>
-                      handleSort('comments', 'asc', 'Least Comments', 'li4')
+                      handleSort(
+                        'commentsCount',
+                        'asc',
+                        'Least Comments',
+                        'li4'
+                      )
                     }
                   >
                     <p className="p-one">Least Comments</p>

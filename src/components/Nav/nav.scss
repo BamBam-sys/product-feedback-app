@@ -19,27 +19,6 @@
   }
 
   .roadmapNavItem {
-    .back {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      cursor: pointer;
-
-      span {
-        border-bottom: 1px solid transparent;
-        transition: all ease-in-out 200ms;
-
-        &:hover {
-          border-bottom-color: rgba(255, 255, 255, 0.5);
-        }
-      }
-
-      span {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: $white-color;
-      }
-    }
   }
 
   .navItem {

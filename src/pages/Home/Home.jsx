@@ -8,14 +8,13 @@ import _ from 'lodash';
 import './home.scss';
 
 const Home = () => {
-  const state = useSelector((state) => state);
-  const productRequests = selectProductRequests(state);
-  const params = useParams();
-
   const [sort, setSort] = useState({
     param: 'upvotes',
     sortBy: 'desc',
   });
+  const state = useSelector((state) => state);
+  const productRequests = selectProductRequests(state);
+  const params = useParams();
 
   // filter product requests by status to get suggestions
   const suggestions = productRequests.filter(
@@ -28,9 +27,24 @@ const Home = () => {
       ? suggestions.filter((item) => item.category === params.category)
       : suggestions;
 
+  // add the number of replies to the number of comments
+
+  const updatedFilteredSuggestions = filteredSuggestions.map((request) => {
+    const replies = request.comments.map((comment) =>
+      comment.replies ? comment.replies.length : 0
+    );
+
+    const commentsCount = replies.reduce(
+      (prev, curr) => prev + curr,
+      request.comments?.length
+    );
+
+    return { ...request, commentsCount };
+  });
+
   // sort through suggestions
   const sortedSuggestions = _.orderBy(
-    filteredSuggestions,
+    updatedFilteredSuggestions,
     [sort.param],
     [sort.sortBy]
   );

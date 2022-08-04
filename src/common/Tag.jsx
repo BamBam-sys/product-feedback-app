@@ -1,4 +1,4 @@
-import { StyledTag } from './styles';
+import { StyledTag } from './styled';
 
 const Tag = ({ category }) => {
   return (

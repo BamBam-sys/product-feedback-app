@@ -1,5 +1,5 @@
 import { ReactComponent as ArrowIconUp } from '../assets/shared/icon-arrow-up.svg';
-import { StyledUpvote } from './styles';
+import { StyledUpvote } from './styled';
 
 const Upvote = ({ upvotes, component }) => {
   return (

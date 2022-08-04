@@ -1,10 +1,22 @@
 import { Comment, Tag, Upvote } from '../../common';
 import './request.scss';
 
-const Request = ({ title, category, description, upvotes, comments }) => {
+const Request = ({
+  title,
+  category,
+  description,
+  upvotes,
+  comments,
+  onClick,
+}) => {
   return (
-    <div className="request">
-      <div className="votes">
+    <div className="request" onClick={onClick}>
+      <div
+        className="votes"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <Upvote upvotes={upvotes} />
       </div>
       <div className="midEl">

@@ -1,0 +1,39 @@
+@import '../../scss/variables.scss';
+
+.productRequestDetail {
+  max-width: 73rem;
+  width: 85%;
+  margin: 8rem auto;
+
+  .productRequest {
+    .top {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 2.4rem;
+    }
+  }
+
+  .commentsList {
+    padding: 3.2rem;
+    background: $white-color;
+    border-radius: 10px;
+  }
+
+  .commentBox {
+    margin-top: 2.4rem;
+    background: $white-color;
+    padding: 2.4rem 3.4rem;
+    border-radius: 10px;
+
+    h3 {
+      margin-bottom: 2.4rem;
+    }
+
+    div {
+      margin-top: 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
