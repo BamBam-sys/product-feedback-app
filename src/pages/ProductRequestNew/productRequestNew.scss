@@ -1,0 +1,75 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mediaQueries.scss';
+
+.productRequestNew {
+  max-width: 54rem;
+  width: 85%;
+  margin: 8rem auto;
+
+  .newFeedback {
+    margin-top: 6.8rem;
+    padding: 5.2rem 4.2rem 4rem 4.2rem;
+    background-color: $white-color;
+    border-radius: 10px;
+    position: relative;
+
+    .plusIcon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: -2.8rem;
+      left: 2.8rem;
+      height: 5.6rem;
+      width: 5.6rem;
+      border-radius: 50%;
+      font-size: 3.4rem;
+      font-weight: 700;
+      color: $white-color;
+      background: radial-gradient(
+        128.88% 128.88% at 103.9% -10.39%,
+        #e84d70 0%,
+        #a337f6 53.09%,
+        #28a7ed 100%
+      );
+    }
+
+    h1 {
+      margin-bottom: 1.6rem;
+    }
+
+    form {
+      .input,
+      .dropdown {
+        margin-top: 2.4rem;
+      }
+
+      .dropdown {
+        position: relative;
+
+        .icon span {
+          position: absolute;
+          right: 2.4rem;
+          top: 75%;
+          transform: translateY(-75%);
+        }
+
+        .inputDropdown {
+          position: absolute;
+          width: 100%;
+        }
+      }
+
+      .btns {
+        margin-top: 1.6rem;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1.6rem;
+
+        @include breakpoint(sm) {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}

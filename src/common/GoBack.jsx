@@ -8,7 +8,7 @@ const GoBack = ({ color }) => {
   return (
     <StyledGoBack onClick={() => navigate(-1)} color={color}>
       <ArrowIconLeft />
-      <span>Go back</span>
+      <span>Go Back</span>
     </StyledGoBack>
   );
 };

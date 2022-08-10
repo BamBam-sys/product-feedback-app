@@ -8,6 +8,7 @@ const Card = ({
   category,
   upvotes,
   comments,
+  onClick,
 }) => {
   const color = () => {
     if (cardTitle === 'Planned') return '#f49f85';
@@ -16,7 +17,11 @@ const Card = ({
   };
 
   return (
-    <div className="card" style={{ borderTopColor: `${color()}` }}>
+    <div
+      className="card"
+      style={{ borderTopColor: `${color()}` }}
+      onClick={onClick}
+    >
       <div className="status">
         <div className="dot" style={{ background: `${color()}` }}></div>
         <p className="p-one ">{cardTitle}</p>

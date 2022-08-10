@@ -6,21 +6,22 @@ import {
   selectRequest,
   selectUser,
 } from './../../store/productRequestsSlice';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams, useNavigate } from 'react-router-dom';
 import { CommentCard, Request } from '../../components';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import CommentInput from '../../common/CommentInput';
 
 const ProductRequestDetail = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { id: reqId } = useParams();
+
   const state = useSelector((state) => state);
   const [comment, setComment] = useState('');
 
-  const { id } = useParams();
-  const dispatch = useDispatch();
-
   const user = selectUser(state);
-  const [request] = selectRequest(state, +id);
+  const [request] = selectRequest(state, +reqId || reqId);
 
   const btnPropsBlue = {
     bg: '#4661E6',
@@ -50,7 +51,7 @@ const ProductRequestDetail = () => {
 
     dispatch(
       commentReceived({
-        id,
+        id: +reqId || reqId,
         comment: {
           id: uuidv4(),
           content: comment,
@@ -72,7 +73,10 @@ const ProductRequestDetail = () => {
             <GoBack color={'rgba(100, 113, 150, 0.5)'} />
           </div>
           <div>
-            <Button btnProps={btnPropsBlue} />
+            <Button
+              btnProps={btnPropsBlue}
+              onClick={() => navigate(`/edit/${reqId}`)}
+            />
           </div>
         </div>
         <div className="bottom">
@@ -85,7 +89,7 @@ const ProductRequestDetail = () => {
         {request?.comments.map((comment) => (
           <CommentCard
             comment={comment}
-            id={id}
+            id={reqId}
             commentId={comment.id}
             key={comment.id}
           />
@@ -104,7 +108,9 @@ const ProductRequestDetail = () => {
           <span className="counter p-two">
             {maxChar > 0 ? maxChar : 0} Characters left
           </span>
-          <Button btnProps={btnPropsPurple} />
+          <div>
+            <Button btnProps={btnPropsPurple} type={'submit'} />
+          </div>
         </div>
       </form>
     </div>

@@ -1,5 +1,6 @@
 import { createSlice, current } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
   currentUser: {},
@@ -15,14 +16,29 @@ export const productRequestsSlice = createSlice({
       state.productRequests = action.payload.productRequests;
     },
 
+    productRequestReceived: (state, { payload }) => {
+      const { title, category, detail } = payload;
+      const newRequest = {
+        id: uuidv4(),
+        title,
+        category,
+        upvotes: 24,
+        status: 'planned',
+        description: detail,
+        comments: [],
+      };
+
+      state.productRequests = [...state.productRequests, newRequest];
+    },
+
     commentReceived: (state, { payload: { id, comment } }) => {
-      const index = state.productRequests.findIndex((req) => req.id === +id);
+      const index = state.productRequests.findIndex((req) => req.id === id);
       const request = state.productRequests[index];
       request.comments = [...request.comments, comment];
     },
 
     replyReceived: (state, { payload: { id, reply, commentId } }) => {
-      const index = state.productRequests.findIndex((req) => req.id === +id);
+      const index = state.productRequests.findIndex((req) => req.id === id);
       const request = state.productRequests[index];
       const commnetIndex = request.comments.findIndex(
         (com) => com.id === commentId
@@ -37,8 +53,12 @@ export const productRequestsSlice = createSlice({
   },
 });
 
-export const { productRequestsReceived, commentReceived, replyReceived } =
-  productRequestsSlice.actions;
+export const {
+  productRequestsReceived,
+  commentReceived,
+  replyReceived,
+  productRequestReceived,
+} = productRequestsSlice.actions;
 
 export default productRequestsSlice.reducer;
 

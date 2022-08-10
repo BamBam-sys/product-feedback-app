@@ -44,6 +44,7 @@ export const StyledComment = styled.div`
 `;
 
 export const StyledButton = styled.button`
+  width: 100%;
   border: none;
   background: ${({ styles }) => styles.bg};
   color: #fff;
@@ -77,8 +78,6 @@ export const StyledGoBack = styled.div`
   span {
     font-size: 1.4rem;
     font-weight: 700;
-    color: $white-color;
-    border-bottom: 1px solid transparent;
     transition: all ease-in-out 200ms;
 
     &:hover {
@@ -87,14 +86,16 @@ export const StyledGoBack = styled.div`
   }
 `;
 
-export const StyledCommentInput = styled.input`
-  padding: 1.6rem 0 3rem 2.4rem;
+export const StyledCommentInput = styled.textarea`
+  width: 100%;
+  padding: 1.6rem 2.4rem 1.4rem 2.4rem;
   background: #f7f8fd;
   border: none;
   color: #3a4374;
   border-radius: 5px;
   font-size: 1.5rem;
   line-height: 22px;
+  resize: none;
 
   &::placeholder {
     color: #3a4374;
@@ -103,5 +104,15 @@ export const StyledCommentInput = styled.input`
   &:focus {
     outline: none;
     border: 1px solid #4661e6;
+  }
+`;
+
+export const StyledInput = styled(StyledCommentInput)`
+  padding-top: 1.2rem;
+  cursor: ${(props) => (props.readOnly ? 'pointer' : 'text')};
+  height: ${(props) => (props.tag === 'textarea' ? '9.6rem' : '')};
+
+  &::-ms-expand {
+    ${'' /* display: none; */}
   }
 `;

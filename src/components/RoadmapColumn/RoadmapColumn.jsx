@@ -1,7 +1,9 @@
 import { Card } from '..';
 import './roadmapColumn.scss';
+import { useNavigate } from 'react-router-dom';
 
 const RoadmapColumn = ({ data, title, subTitle, cardTitle }) => {
+  const navigate = useNavigate();
   return (
     <div className="roadmapColumn">
       <div className="heading">
@@ -12,7 +14,12 @@ const RoadmapColumn = ({ data, title, subTitle, cardTitle }) => {
       </div>
       <div className="cards">
         {data.map((req) => (
-          <Card key={req.id} {...req} cardTitle={cardTitle} />
+          <Card
+            key={req.id}
+            {...req}
+            cardTitle={cardTitle}
+            onClick={() => navigate(`/detail/${req.id}`)}
+          />
         ))}
       </div>
     </div>

@@ -25,7 +25,7 @@ const ReplyCard = ({ reply }) => {
 
     dispatch(
       replyReceived({
-        id: reply.id,
+        id: +reply.id || reply.id,
         reply: {
           content: response,
           replyingTo: reply.user.username,

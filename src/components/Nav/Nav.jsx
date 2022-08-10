@@ -20,7 +20,7 @@ const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
   const ref = useRef();
 
   const handleDropdown = () => {
-    setDropdown(!dropdown);
+    setDropdown((prev) => !prev);
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
     <div className="nav" style={navPadding}>
       {component === 'roadmap' ? (
         <div className="roadmapNavItem">
-          <GoBack color={'rgba(255, 255, 255, 0.5)'} />
+          <GoBack />
           <h1>Roadmap</h1>
         </div>
       ) : (

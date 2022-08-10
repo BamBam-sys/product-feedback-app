@@ -9,6 +9,7 @@ const CommentInput = ({ placeholder, value, maxLength, onChange }) => {
       onChange={(e) => onChange(e.target.value)}
       value={value}
       maxLength={maxLength}
+      autoFocus
     />
   );
 };

@@ -4,6 +4,7 @@ import './commentCard.scss';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { replyReceived, selectUser } from '../../store/productRequestsSlice';
+import { v4 as uuidv4 } from 'uuid';
 
 const CommentCard = ({ comment, id, commentId }) => {
   const [responseState, setResponseState] = useState(false);
@@ -18,9 +19,12 @@ const CommentCard = ({ comment, id, commentId }) => {
   const handleResponse = (event) => {
     event.preventDefault();
 
+    if (response.trim() === '') return;
+
+    console.log('first');
     dispatch(
       replyReceived({
-        id,
+        id: +id || id,
         reply: {
           content: response,
           replyingTo: comment.user.username,
@@ -81,10 +85,7 @@ const CommentCard = ({ comment, id, commentId }) => {
 
       {comment.replies?.map((reply) => (
         <div className="replycard">
-          <ReplyCard
-            key={reply.user.username}
-            reply={{ ...reply, id, commentId }}
-          />
+          <ReplyCard key={uuidv4()} reply={{ ...reply, id, commentId }} />
         </div>
       ))}
     </div>

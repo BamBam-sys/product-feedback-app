@@ -1,0 +1,26 @@
+@import '../../scss/variables.scss';
+
+.InputDropDown {
+  margin-top: 1.6rem;
+  background-color: $white-color;
+  width: 100%;
+  box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+  border-radius: 10px;
+
+  .category {
+    padding: 1.2rem 2.4rem 1.2rem 2.4rem;
+    border-bottom: 1px solid rgba(58, 67, 116, 0.15);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .icon {
+      display: none;
+    }
+
+    .icon.checked {
+      display: block;
+    }
+  }
+}

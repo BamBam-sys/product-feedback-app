@@ -7,6 +7,7 @@ import RoadmapColumn from './RoadmapColumn/RoadmapColumn';
 import Card from './Card/Card';
 import CommentCard from './CommentCard/CommentCard';
 import ReplyCard from './ReplyCard/ReplyCard';
+import InputDropDown from './InputDropDown/InputDropDown';
 
 export {
   ProductRequests,
@@ -18,4 +19,5 @@ export {
   Card,
   CommentCard,
   ReplyCard,
+  InputDropDown,
 };
