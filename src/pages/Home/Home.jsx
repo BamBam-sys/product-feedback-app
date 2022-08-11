@@ -24,7 +24,9 @@ const Home = () => {
   //  filter the suggestions list by the category (category is param), if params object is not empty,
   const filteredSuggestions =
     Object.keys(params).length !== 0
-      ? suggestions.filter((item) => item.category === params.category)
+      ? suggestions.filter(
+          (item) => item.category.toLowerCase() === params.category
+        )
       : suggestions;
 
   // add the number of replies to the number of comments

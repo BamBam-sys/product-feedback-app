@@ -21,14 +21,28 @@ export const productRequestsSlice = createSlice({
       const newRequest = {
         id: uuidv4(),
         title,
-        category,
+        category: category,
         upvotes: 24,
-        status: 'planned',
+        status: 'suggestion',
         description: detail,
         comments: [],
       };
 
       state.productRequests = [...state.productRequests, newRequest];
+    },
+
+    productRequestUpdated: (state, { payload }) => {
+      const newState = state.productRequests.map((req) =>
+        req.id === payload.id ? payload : req
+      );
+      state.productRequests = newState;
+    },
+
+    productRequestDeleted: (state, { payload }) => {
+      const newState = state.productRequests.filter(
+        (req) => req.id !== payload.id
+      );
+      state.productRequests = newState;
     },
 
     commentReceived: (state, { payload: { id, comment } }) => {
@@ -58,6 +72,8 @@ export const {
   commentReceived,
   replyReceived,
   productRequestReceived,
+  productRequestUpdated,
+  productRequestDeleted,
 } = productRequestsSlice.actions;
 
 export default productRequestsSlice.reducer;

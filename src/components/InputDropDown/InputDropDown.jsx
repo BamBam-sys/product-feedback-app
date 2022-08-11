@@ -1,27 +1,28 @@
 import { useState } from 'react';
 import { ReactComponent as CheckIcon } from '../../assets/shared/icon-check.svg';
+import { capitalize } from '../../utils';
 
 import './inputDropDown.scss';
 
-const InputDropDown = ({ categories, onClick, selectedCategory }) => {
-  const [selected, setSelected] = useState(selectedCategory);
+const InputDropDown = ({ data, onClick, selectedData, name }) => {
+  const [selected, setSelected] = useState(selectedData);
 
-  const handleSelect = (category) => {
-    setSelected(category);
-    onClick(category);
+  const handleSelect = (item, name) => {
+    setSelected(item);
+    onClick(item, name);
   };
 
   return (
     <div className="InputDropDown">
-      {categories.map((category) => (
+      {data.map((item) => (
         <div
-          className="category"
-          key={category}
-          onClick={() => handleSelect(category)}
+          className="item"
+          key={item}
+          onClick={() => handleSelect(item, name)}
         >
-          <span className="p-one">{category}</span>
+          <span className="p-one">{item}</span>
           <CheckIcon
-            className={selected === category ? 'icon checked' : 'icon'}
+            className={capitalize(selected) === item ? 'icon checked' : 'icon'}
           />
         </div>
       ))}

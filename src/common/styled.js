@@ -111,6 +111,7 @@ export const StyledInput = styled(StyledCommentInput)`
   padding-top: 1.2rem;
   cursor: ${(props) => (props.readOnly ? 'pointer' : 'text')};
   height: ${(props) => (props.tag === 'textarea' ? '9.6rem' : '')};
+  text-transform: ${(props) => (props.readOnly ? 'capitalize' : 'none')};
 
   &::-ms-expand {
     ${'' /* display: none; */}

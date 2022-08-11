@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, GoBack, Input, Select } from '../../common';
+import { Button, GoBack, Input } from '../../common';
 import { ReactComponent as ArrowIconUp } from '../../assets/shared/icon-arrow-up.svg';
 import { ReactComponent as ArrowIconDown } from '../../assets/shared/icon-arrow-down.svg';
 
@@ -29,7 +29,7 @@ const FeedbackNew = () => {
       category: 'Feature',
       detail: '',
     });
-    navigate('/roadmap');
+    navigate('/');
   };
 
   const handleChange = ({ target }) => {
@@ -108,8 +108,8 @@ const FeedbackNew = () => {
             {dropdown ? (
               <div className="inputDropdown">
                 <InputDropDown
-                  categories={categories}
-                  selectedCategory={input.category}
+                  data={categories}
+                  selectedData={input.category}
                   onClick={handleSelect}
                 />
               </div>

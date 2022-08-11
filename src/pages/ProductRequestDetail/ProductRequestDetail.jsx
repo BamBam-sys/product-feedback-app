@@ -6,7 +6,7 @@ import {
   selectRequest,
   selectUser,
 } from './../../store/productRequestsSlice';
-import { Navigate, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { CommentCard, Request } from '../../components';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -15,13 +15,14 @@ import CommentInput from '../../common/CommentInput';
 const ProductRequestDetail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id: reqId } = useParams();
 
   const state = useSelector((state) => state);
-  const [comment, setComment] = useState('');
-
   const user = selectUser(state);
+
+  const { id: reqId } = useParams();
   const [request] = selectRequest(state, +reqId || reqId);
+
+  const [comment, setComment] = useState('');
 
   const btnPropsBlue = {
     bg: '#4661E6',
