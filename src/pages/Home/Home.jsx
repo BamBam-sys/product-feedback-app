@@ -30,7 +30,6 @@ const Home = () => {
       : suggestions;
 
   // add the number of replies to the number of comments
-
   const updatedFilteredSuggestions = filteredSuggestions.map((request) => {
     const replies = request.comments.map((comment) =>
       comment.replies ? comment.replies.length : 0

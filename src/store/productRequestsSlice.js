@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import { v4 as uuidv4 } from 'uuid';
 
