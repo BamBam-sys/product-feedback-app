@@ -72,7 +72,7 @@ const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
             </div>
           </div>
 
-          <div className="navItem menu">
+          <div className="navItem menu" ref={ref}>
             <div className="sort" onClick={handleDropdown}>
               <p>Sort by </p> <span>&#58;</span> <h4>{sortTitle}</h4>
               <span>
@@ -84,7 +84,7 @@ const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
               </span>
             </div>
             {dropdown ? (
-              <div className="dropdown" ref={ref}>
+              <div className="dropdown">
                 <ul>
                   <li
                     onClick={() =>
