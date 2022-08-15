@@ -112,6 +112,7 @@ export const StyledInput = styled(StyledCommentInput)`
   cursor: ${(props) => (props.readOnly ? 'pointer' : 'text')};
   height: ${(props) => (props.tag === 'textarea' ? '9.6rem' : '')};
   text-transform: ${(props) => (props.readOnly ? 'capitalize' : 'none')};
+  border: ${(props) => (props.error ? '1px solid #D73737' : 'none')};
 
   &::-ms-expand {
     ${'' /* display: none; */}

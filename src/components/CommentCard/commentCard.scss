@@ -2,7 +2,6 @@
 @import '../../scss/mediaQueries.scss';
 
 .commentCard {
-  position: relative;
   padding: 2.2rem;
 
   @include breakpoint(sm) {
@@ -51,7 +50,7 @@
     .comment {
       grid-column: 2/-1;
 
-      @include breakpoint(sm) {
+      @include breakpoint(md) {
         grid-column: 1/-1;
       }
     }
@@ -64,32 +63,51 @@
     margin-left: 6.7rem;
     margin-top: 1.4rem;
 
+    @include breakpoint(md) {
+      flex-direction: column;
+      margin-left: 0;
+      width: 100%;
+
+      .resBtn {
+        width: 100%;
+      }
+    }
+
     .resInput {
       width: 70%;
+
+      @include breakpoint(md) {
+        width: 100%;
+      }
     }
   }
 
   .replycard {
-    margin-left: 6.4rem;
+    padding-left: 5rem;
+    position: relative;
 
     @include breakpoint(sm) {
-      margin-left: 3.2rem;
+      padding-left: 3.2rem;
     }
 
     &::before {
       content: '';
       display: inline-block;
       width: 1px;
-      height: 52.5%;
-      background: rgba(140, 146, 179, 0.2);
+      height: 100%;
+      background: rgba(140, 146, 179, 0.1);
       position: absolute;
-      top: 12.5rem;
-      left: 5rem;
+      top: -11rem;
+      left: 2.5rem;
+
+      @include breakpoint(md) {
+        top: 0rem;
+        left: 2.5rem;
+        height: 65%;
+      }
 
       @include breakpoint(sm) {
-        top: 23.5rem;
-        left: 0;
-        height: 35.5%;
+        left: 0rem;
       }
     }
   }

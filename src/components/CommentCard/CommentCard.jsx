@@ -38,9 +38,9 @@ const CommentCard = ({ comment, id, commentId }) => {
     setResponseState(false);
   };
 
-  const leftBorder = comment.replies ? '' : '';
+  const leftBorder = comment.replies ? 'border' : '';
   const borderBottomStyle = {
-    borderBottom: comment.replies ? '' : '1px solid rgba(140, 146, 179, 0.2)',
+    borderBottom: comment.replies ? '' : '1px solid rgba(140, 146, 179, 0.1)',
   };
 
   const btnPropsPurple = {
@@ -83,11 +83,11 @@ const CommentCard = ({ comment, id, commentId }) => {
         </form>
       )}
 
-      {comment.replies?.map((reply) => (
-        <div className="replycard">
+      <div className="replycard">
+        {comment.replies?.map((reply) => (
           <ReplyCard key={uuidv4()} reply={{ ...reply, id, commentId }} />
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

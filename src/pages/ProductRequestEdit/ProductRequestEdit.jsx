@@ -15,6 +15,7 @@ import InputDropDown from './../../components/InputDropDown/InputDropDown';
 import { ReactComponent as EditIcon } from '../../assets/shared/icon-edit-feedback.svg';
 import Button from './../../common/Button';
 import './productRequestEdit.scss';
+import { validate } from './../../utils';
 
 const ProductRequestEdit = () => {
   const [input, setInput] = useState();
@@ -31,18 +32,28 @@ const ProductRequestEdit = () => {
   const [request] = selectRequest(state, +reqId || reqId);
 
   useEffect(() => {
-    setInput({ ...request });
+    setInput({ data: { ...request }, errors: {} });
   }, [request]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(productRequestUpdated(input));
+    const errors = validate(input);
+
+    setInput((prev) => ({ ...prev, errors: errors || {} }));
+
+    if (errors) return;
+
+    dispatch(productRequestUpdated(input.data));
     navigate(`/detail/${reqId}`);
   };
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
-    setInput((prev) => ({ ...prev, [name]: value }));
+    setInput((prev) => ({
+      ...prev,
+      errors: { ...prev.errors, [name]: '' },
+    }));
+    setInput((prev) => ({ ...prev, data: { ...prev.data, [name]: value } }));
   };
 
   const handleClick = (param) => {
@@ -50,7 +61,10 @@ const ProductRequestEdit = () => {
   };
 
   const handleSelect = (item, name) => {
-    setInput((prev) => ({ ...prev, [name]: item.toLowerCase() }));
+    setInput((prev) => ({
+      ...prev,
+      data: { ...prev.data, [name]: item },
+    }));
   };
 
   const handleCancel = () => {
@@ -58,7 +72,7 @@ const ProductRequestEdit = () => {
   };
 
   const handleDelete = () => {
-    dispatch(productRequestDeleted(input));
+    dispatch(productRequestDeleted(input.data));
     navigate(-2);
   };
 
@@ -101,8 +115,9 @@ const ProductRequestEdit = () => {
                 name={'title'}
                 text={'Add a short, descriptive headline'}
                 onChange={handleChange}
-                value={input.title}
+                value={input.data.title}
                 tag={'input'}
+                error={input.errors.title}
               />
             </div>
 
@@ -114,7 +129,7 @@ const ProductRequestEdit = () => {
               <Input
                 label={'Category'}
                 text={'Choose a category for your feedback'}
-                value={input.category}
+                value={input.data.category}
                 readOnly={true}
                 tag={'input'}
               />
@@ -132,7 +147,7 @@ const ProductRequestEdit = () => {
                   <InputDropDown
                     data={categories}
                     name={'category'}
-                    selectedData={input.category}
+                    selectedData={input.data.category}
                     onClick={handleSelect}
                   />
                 </div>
@@ -143,7 +158,7 @@ const ProductRequestEdit = () => {
               <Input
                 label={'Update Status'}
                 text={'Change feature state'}
-                value={input.status}
+                value={input.data.status}
                 readOnly={true}
                 tag={'input'}
               />
@@ -161,7 +176,7 @@ const ProductRequestEdit = () => {
                   <InputDropDown
                     data={status}
                     name={'status'}
-                    selectedData={input.status}
+                    selectedData={input.data.status}
                     onClick={handleSelect}
                   />
                 </div>
@@ -176,8 +191,9 @@ const ProductRequestEdit = () => {
                   'Include any specific comments on what should be improved, added, etc.'
                 }
                 onChange={handleChange}
-                value={input.description}
+                value={input.data.description}
                 tag={'textarea'}
+                error={input.errors.description}
               />
             </div>
             <div className="btns">
@@ -197,11 +213,7 @@ const ProductRequestEdit = () => {
                   />
                 </div>
                 <div>
-                  <Button
-                    btnProps={btnPropsPurple}
-                    type={'submit'}
-                    onClick={handleCancel}
-                  />
+                  <Button btnProps={btnPropsPurple} type={'submit'} />
                 </div>
               </div>
             </div>

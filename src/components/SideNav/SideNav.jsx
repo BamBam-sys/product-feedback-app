@@ -10,6 +10,7 @@ import { ReactComponent as CloseIcon } from '../../assets/shared/mobile/icon-clo
 import { ReactComponent as HamburgerIcon } from '../../assets/shared/mobile/icon-hamburger.svg';
 
 import './sideNav.scss';
+import { useOnClickOutside } from '../../utils';
 
 const SideNav = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -35,6 +36,8 @@ const SideNav = () => {
       document.body.style.overflowY = 'unset';
     };
   }, [mobileMenu]);
+
+  const [ref] = useOnClickOutside(mobileMenu, setMobileMenu);
 
   return (
     <div className={mobileMenu ? 'sideNav active' : 'sideNav'}>
@@ -104,7 +107,7 @@ const SideNav = () => {
       <div className="overlay"></div>
 
       {/* mobile */}
-      <div className="mobileMenu">
+      <div className="mobileMenu" ref={ref}>
         <div className="category">
           <NavLink className={`${activeStyle.style} link`} to={'/'}>
             All

@@ -1,7 +1,16 @@
 import React from 'react';
 import { StyledInput } from './styled';
 
-const Input = ({ label, text, name, onChange, value, readOnly, tag }) => {
+const Input = ({
+  label,
+  text,
+  name,
+  onChange,
+  value,
+  readOnly,
+  tag,
+  error,
+}) => {
   return (
     <div className="formGroup">
       <label htmlFor={name}>
@@ -26,7 +35,11 @@ const Input = ({ label, text, name, onChange, value, readOnly, tag }) => {
         value={value}
         readOnly={readOnly}
         tag={tag}
+        error={error}
       />
+      <div className="p-one" style={{ color: '#D73737' }}>
+        {error}
+      </div>
     </div>
   );
 };

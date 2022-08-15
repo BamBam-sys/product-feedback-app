@@ -5,7 +5,8 @@ import { ReactComponent as CheckIcon } from '../../assets/shared/icon-check.svg'
 
 import './nav.scss';
 import { AddFeedbackBtn, GoBack } from '../../common';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { useOnClickOutside } from '../../utils';
 
 const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -17,26 +18,12 @@ const Nav = ({ sortedSuggestions, sortSuggestions, component }) => {
     li4: false,
   });
 
-  const ref = useRef();
-
   const handleDropdown = () => {
     setDropdown((prev) => !prev);
   };
 
-  useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      // If the menu is open and the clicked target is not within the menu,
-      // then close the menu
-      if (dropdown && ref.current && !ref.current.contains(e.target)) {
-        setDropdown(false);
-      }
-    };
-    document.addEventListener('mousedown', checkIfClickedOutside);
-    return () => {
-      // Cleanup the event listener
-      document.removeEventListener('mousedown', checkIfClickedOutside);
-    };
-  }, [dropdown]);
+  // close component when there is a click outside the component
+  const [ref] = useOnClickOutside(dropdown, setDropdown);
 
   const handleSort = (param, sortBy, title, el) => {
     setChecked((prev) => {

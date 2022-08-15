@@ -8,33 +8,41 @@ import './productRequestNew.scss';
 import { InputDropDown } from '../../components';
 import { useDispatch } from 'react-redux';
 import { productRequestReceived } from '../../store/productRequestsSlice';
+import { validate } from './../../utils';
 
 const FeedbackNew = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
-    title: '',
-    category: 'Feature',
-    detail: '',
+    data: { title: '', category: 'Feature', description: '' },
+    errors: {},
   });
 
   const [dropdown, setDropdown] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(productRequestReceived(input));
+
+    const errors = validate(input);
+
+    setInput((prev) => ({ ...prev, errors: errors || {} }));
+
+    if (errors) return;
+
+    dispatch(productRequestReceived(input.data));
     setInput({
       title: '',
       category: 'Feature',
-      detail: '',
+      description: '',
     });
     navigate('/');
   };
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
-    setInput((prev) => ({ ...prev, [name]: value }));
+    setInput((prev) => ({ ...prev, errors: { ...prev.errors, [name]: '' } }));
+    setInput((prev) => ({ ...prev, data: { ...prev.data, [name]: value } }));
   };
 
   const handleClick = () => {
@@ -42,15 +50,14 @@ const FeedbackNew = () => {
   };
 
   const handleSelect = (category) => {
-    setInput((prev) => ({ ...prev, category }));
+    setInput((prev) => ({ ...prev, data: { ...prev.data, category } }));
   };
 
   const handleCancel = () => {
     navigate(-1);
     setInput({
-      title: '',
-      category: 'Feature',
-      detail: '',
+      data: { title: '', category: 'Feature', description: '' },
+      error: {},
     });
   };
 
@@ -68,6 +75,11 @@ const FeedbackNew = () => {
 
   const categories = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'];
 
+  const {
+    data: { title, category, description },
+    errors,
+  } = input;
+
   return (
     <div className="productRequestNew">
       <GoBack />
@@ -83,8 +95,9 @@ const FeedbackNew = () => {
               name={'title'}
               text={'Add a short, descriptive headline'}
               onChange={handleChange}
-              value={input.title}
+              value={title}
               tag={'input'}
+              error={errors.title}
             />
           </div>
 
@@ -92,7 +105,7 @@ const FeedbackNew = () => {
             <Input
               label={'Category'}
               text={'Choose a category for your feedback'}
-              value={input.category}
+              value={category}
               readOnly={true}
               tag={'input'}
             />
@@ -109,7 +122,7 @@ const FeedbackNew = () => {
               <div className="inputDropdown">
                 <InputDropDown
                   data={categories}
-                  selectedData={input.category}
+                  selectedData={category}
                   onClick={handleSelect}
                 />
               </div>
@@ -119,13 +132,14 @@ const FeedbackNew = () => {
           <div className="input">
             <Input
               label={'Feedback Detail'}
-              name={'detail'}
+              name={'description'}
               text={
                 'Include any specific comments on what should be improved, added, etc.'
               }
               onChange={handleChange}
-              value={input.detail}
+              value={description}
               tag={'textarea'}
+              error={errors.description}
             />
           </div>
 

@@ -41,7 +41,7 @@
     .replyContent {
       grid-column: 2/-1;
 
-      @include breakpoint(sm) {
+      @include breakpoint(md) {
         grid-column: 1/-1;
       }
 
@@ -50,17 +50,6 @@
         font-weight: 700;
         color: $purple-color;
       }
-    }
-  }
-  .response {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-left: 6.7rem;
-    margin-top: 1.4rem;
-
-    .resInput {
-      width: 70%;
     }
   }
 }

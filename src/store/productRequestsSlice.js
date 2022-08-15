@@ -17,14 +17,14 @@ export const productRequestsSlice = createSlice({
     },
 
     productRequestReceived: (state, { payload }) => {
-      const { title, category, detail } = payload;
+      const { title, category, description } = payload;
       const newRequest = {
         id: uuidv4(),
         title,
-        category: category,
+        category,
         upvotes: 24,
         status: 'suggestion',
-        description: detail,
+        description,
         comments: [],
       };
 
