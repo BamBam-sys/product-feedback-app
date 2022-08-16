@@ -57,7 +57,7 @@ const FeedbackNew = () => {
     navigate(-1);
     setInput({
       data: { title: '', category: 'Feature', description: '' },
-      error: {},
+      errors: {},
     });
   };
 
@@ -73,6 +73,7 @@ const FeedbackNew = () => {
     text: 'Add Feedback',
   };
 
+  console.log(input);
   const categories = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'];
 
   const {

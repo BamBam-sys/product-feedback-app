@@ -37,9 +37,11 @@ const Input = ({
         tag={tag}
         error={error}
       />
-      <div className="p-one" style={{ color: '#D73737' }}>
-        {error}
-      </div>
+      {error && (
+        <div className="p-one" style={{ color: '#D73737' }}>
+          {error}
+        </div>
+      )}
     </div>
   );
 };
