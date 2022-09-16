@@ -27,7 +27,7 @@ function App() {
   }, []);
   return (
     <>
-      <Routes>
+      <>
         <Route path="/">
           <Route index element={<Home />} />
           <Route path=":category" element={<Home />} />
@@ -37,7 +37,7 @@ function App() {
         <Route path="/new" element={<ProductRequestNew />} />
         <Route path="/roadmap" element={<Roadmap />} />
         <Route path="*" element={<ErrorPage />} />
-      </Routes>
+      </>
     </>
   );
 }
